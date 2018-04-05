@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MVVM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div id="app">
+    <h1>Hello, {{fullname}}!</h1>
+    <input v-model="person.first" type="text">
+    <input v-model="person.last" type="text">
+    <p>{{person.first}}</p>
+    <p>{{person.last}}</p>
+    <p>{{person.age}}</p>
+  </div>
+  <script src="mvvm.js"></script>
+  <script>
+    let mvvm = new MVVM({
+      el: '#app',
+      data: {
+        person: {
+          first: 'John',
+          last: 'Doe',
+          age: 42
+        }
+      },
+      computed: {
+        fullname() {
+          return this.person.first + ' ' + this.person.last;
+        }
+      },
+      mounted() {
+        console.log('mounted')
+      }
+    })
+  </script>
+</body>
+
+</html>
